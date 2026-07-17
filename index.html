@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#212C2A" />
+  <title>ShoppingList</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ShoppingList" />
+
+  <!-- Fonts: Inter (UI) + JetBrains Mono (machine voice) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card" aria-label="Shopping list">
+      <!-- Header: title (left) + clear (right) -->
+      <header class="card__header">
+        <div class="card__title-wrap">
+          <h1 class="card__title"><img class="card__logo" src="icon.png" alt="" /> ShoppingList</h1>
+          <span class="status" id="status" title="Realtime connection status">
+            <span class="status__dot"></span>
+            <span class="status__label" id="statusLabel">CONNECTING</span>
+          </span>
+        </div>
+        <button type="button" class="btn btn--danger btn--icon" id="clearBtn" aria-label="Clear list" title="Clear list">
+          <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" focusable="false"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg>
+        </button>
+      </header>
+
+      <!-- Add form -->
+      <form class="composer" id="addForm" autocomplete="off">
+        <input
+          type="text"
+          class="composer__input"
+          id="addInput"
+          name="item"
+          placeholder="Add an item and press Enter…"
+          aria-label="Add an item"
+        />
+        <button type="submit" class="composer__add" aria-label="Add item">+</button>
+      </form>
+
+      <!-- Open list -->
+      <section class="list-section">
+        <ul class="list" id="openList" aria-label="Items to buy"></ul>
+        <p class="empty" id="openEmpty" hidden>Nothing here yet — add your first item above.</p>
+      </section>
+
+      <!-- Done -->
+      <section class="list-section list-section--done">
+        <div class="list-section__head">
+          <h2 class="list-section__title">Done</h2>
+          <span class="list-section__count" id="doneCount">0</span>
+        </div>
+        <ul class="list list--done" id="doneList" aria-label="Completed items"></ul>
+        <p class="empty" id="doneEmpty">Completed items land here.</p>
+      </section>
+
+      <p class="hint">
+        Click the circle or swipe an item right to complete it · Click a name to edit ·
+        Drag to reorder
+      </p>
+    </section>
+  </main>
+
+  <!-- Scripts: load in order (classic scripts, no bundler needed) -->
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/sync.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

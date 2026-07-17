@@ -1,0 +1,13 @@
+{
+  "name": "shoppinglist-relay",
+  "version": "1.0.0",
+  "description": "Optional broadcast WebSocket relay for the ShoppingList app",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

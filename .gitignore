@@ -1,0 +1,26 @@
+# --- Playwright MCP artifacts (snapshots, console logs, screenshots) ---
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# --- Local test screenshots at repo root (keep the app icon) ---
+/*.png
+!icon.png
+
+# --- Dependencies ---
+node_modules/
+server/node_modules/
+
+# --- Editor / tooling local config ---
+.claude/
+.vscode/
+.idea/
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+*.log
+
+# --- Env / secrets ---
+.env
+.env.local
