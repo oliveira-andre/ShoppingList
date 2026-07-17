@@ -81,18 +81,16 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: shopping_list_production
-    username: shopping_list
-    password: <%= ENV["SHOPPING_LIST_DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
   cache:
-    <<: *primary_production
-    database: shopping_list_production_cache
+    <<: *default
+    url: <%= ENV["CACHE_DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
   queue:
-    <<: *primary_production
-    database: shopping_list_production_queue
+    <<: *default
+    url: <%= ENV["QUEUE_DATABASE_URL"] %>
     migrations_paths: db/queue_migrate
   cable:
-    <<: *primary_production
-    database: shopping_list_production_cable
+    <<: *default
+    url: <%= ENV["CABLE_DATABASE_URL"] %>
     migrations_paths: db/cable_migrate

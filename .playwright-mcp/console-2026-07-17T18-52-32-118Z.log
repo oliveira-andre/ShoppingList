@@ -1,2 +1,0 @@
-[   17762ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Content) @ http://localhost:3000/shopping_items:0
-[ 1067189ms] [ERROR] WebSocket connection to 'ws://localhost:3000/cable' failed:  @ http://localhost:3000/assets/turbo.min-9fd88cd5.js:27
