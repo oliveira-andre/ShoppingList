@@ -1,0 +1,21 @@
+- main [ref=f2e2]:
+  - region "Shopping list" [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - generic [ref=f2e5]:
+        - heading "ShoppingList" [level=1] [ref=f2e6]
+        - generic "Realtime connection status" [ref=f2e7]: LIVE
+      - button "Clear list" [ref=f2e11] [cursor=pointer]
+    - generic [ref=f2e14]:
+      - textbox "Add an item" [active] [ref=f2e15]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=f2e16] [cursor=pointer]: +
+    - generic [ref=f2e17]:
+      - list "Items to buy"
+      - paragraph [ref=f2e18]: Nothing here yet — add your first item above.
+    - generic [ref=f2e19]:
+      - generic [ref=f2e20]:
+        - heading "Done" [level=2] [ref=f2e21]
+        - generic [ref=f2e22]: "0"
+      - list "Completed items"
+      - paragraph [ref=f2e23]: Completed items land here.
+    - paragraph [ref=f2e24]: Click the circle to complete an item · Click a name to edit · Changes sync live across everyone

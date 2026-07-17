@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - heading "NameError in Home#index" [level=1] [ref=e3]
+  - main [ref=e4]:
+    - paragraph [ref=e5]: "Showing /Users/b1gb0ss/html_apps/shopping_list/app/views/shopping_items/_shopping_item.html.erb where line #1 raised:"
+    - code [ref=e7]: "undefined local variable or method 'item' for an instance of #<Class:0x000000012572b4a8>"
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - text: Extracted source (around line
+        - strong [ref=e10]: "#1"
+        - text: "):"
+      - table [ref=e12]:
+        - rowgroup [ref=e13]:
+          - row [ref=e14]:
+            - cell "1 2 3 4 5 6" [ref=e15]
+            - 'cell "<li id=\"<%= dom_id( item ) %>\" class=\"item\"> <div class=\"item__name\"> <%= turbo_frame_tag dom_id(item, :name) do %> <%= link_to item.name, edit_shopping_item_path(item), class: \"item__label\" %> <% end %> </div>" [ref=e17]':
+              - generic [ref=e18]:
+                - generic [ref=e19]:
+                  - text: <li id="<%= dom_id(
+                  - generic [ref=e20]: item
+                  - text: ) %>" class="item">
+                - generic [ref=e21]: <div class="item__name">
+                - generic [ref=e22]: <%= turbo_frame_tag dom_id(item, :name) do %>
+                - generic [ref=e23]: "<%= link_to item.name, edit_shopping_item_path(item), class: \"item__label\" %>"
+                - generic [ref=e24]: <% end %>
+                - generic [ref=e25]: </div>
+    - paragraph [ref=e26]: "Trace of template inclusion: #<ActionView::Template app/views/home/index.html.erb locals=[]>"
+    - paragraph [ref=e27]:
+      - code [ref=e28]: "Rails.root: /Users/b1gb0ss/html_apps/shopping_list"
+    - generic [ref=e29]:
+      - link "Application Trace" [ref=e30] [cursor=pointer]:
+        - /url: "#"
+      - text: "|"
+      - link "Framework Trace" [ref=e31] [cursor=pointer]:
+        - /url: "#"
+      - text: "|"
+      - link "Full Trace" [ref=e32] [cursor=pointer]:
+        - /url: "#"
+      - code [ref=e34]:
+        - link "app/views/shopping_items/_shopping_item.html.erb:1" [ref=e35] [cursor=pointer]:
+          - /url: "#"
+        - link "app/views/home/index.html.erb:33" [ref=e36] [cursor=pointer]:
+          - /url: "#"
+    - heading "Request" [level=2] [ref=e37]
+    - paragraph [ref=e38]: "Parameters:"
+    - generic [ref=e39]: None
+    - link "Toggle session dump" [ref=e42] [cursor=pointer]:
+      - /url: "#"
+    - link "Toggle env dump" [ref=e45] [cursor=pointer]:
+      - /url: "#"
+    - heading "Response" [level=2] [ref=e46]
+    - paragraph [ref=e47]: "Headers:"
+    - generic [ref=e48]: None
+  - generic [ref=e49]:
+    - generic [ref=e51]:
+      - generic "close" [ref=e53] [cursor=pointer]: ×
+      - generic [ref=e54]: ">>"
+    - textbox [ref=e57]

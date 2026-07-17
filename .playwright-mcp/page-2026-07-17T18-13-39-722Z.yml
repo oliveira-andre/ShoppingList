@@ -1,0 +1,25 @@
+- main [ref=e2]:
+  - region "Shopping list" [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - heading "ShoppingList" [level=1] [ref=e6]
+        - generic "Realtime connection status" [ref=e7]: LIVE
+      - button "Clear list" [ref=e10] [cursor=pointer]
+    - generic [ref=e13]:
+      - textbox "Add an item" [ref=e14]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=e15] [cursor=pointer]: +
+    - list "Items to buy" [ref=e17]:
+      - listitem [ref=e18]:
+        - generic [ref=e19]: Alpha
+        - button "Mark as done" [ref=e21] [cursor=pointer]
+      - listitem [ref=e22]:
+        - generic [ref=e23]: Beta
+        - button "Mark as done" [ref=e25] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - heading "Done" [level=2] [ref=e28]
+        - generic [ref=e29]: "0"
+      - list "Completed items"
+      - paragraph [ref=e30]: Completed items land here.
+    - paragraph [ref=e31]: Click the circle or swipe an item right to complete it · Click a name to edit · Drag to reorder

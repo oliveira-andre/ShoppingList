@@ -1,0 +1,28 @@
+- main [ref=f7e2]:
+  - region "Shopping list" [ref=f7e3]:
+    - generic [ref=f7e4]:
+      - generic [ref=f7e5]:
+        - heading "ShoppingList" [level=1] [ref=f7e6]
+        - generic "Realtime connection status" [ref=f7e7]: LOCAL SYNC
+      - button "Clear list" [ref=f7e10] [cursor=pointer]
+    - generic [ref=f7e13]:
+      - textbox "Add an item" [ref=f7e14]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=f7e15] [cursor=pointer]: +
+    - list "Items to buy" [ref=f7e17]:
+      - listitem [ref=f7e18]:
+        - generic [ref=f7e19]: Milk
+        - button "Mark as done" [ref=f7e21] [cursor=pointer]
+      - listitem [ref=f7e22]:
+        - generic [ref=f7e23]: Bread cheese
+        - button "Mark as done" [ref=f7e25] [cursor=pointer]
+      - listitem [ref=f7e26]:
+        - generic [ref=f7e27]: Apples
+        - button "Mark as done" [ref=f7e29] [cursor=pointer]
+    - generic [ref=f7e30]:
+      - generic [ref=f7e31]:
+        - heading "Done" [level=2] [ref=f7e32]
+        - generic [ref=f7e33]: "0"
+      - list "Completed items"
+      - paragraph [ref=f7e34]: Completed items land here.
+    - paragraph [ref=f7e35]: Click the circle or swipe an item right to complete it · Click a name to edit · Drag to reorder

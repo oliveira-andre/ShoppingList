@@ -1,0 +1,31 @@
+- main [ref=f5e2]:
+  - region "Shopping list" [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - generic [ref=f5e5]:
+        - heading "ShoppingList" [level=1] [ref=f5e6]
+        - generic "Realtime connection status" [ref=f5e7]: LIVE
+      - button "Clear list" [ref=f5e11] [cursor=pointer]
+    - generic [ref=f5e14]:
+      - textbox "Add an item" [active] [ref=f5e15]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=f5e16] [cursor=pointer]: +
+    - list "Items to buy" [ref=f5e18]:
+      - listitem [ref=f5e19]:
+        - link "Milk" [ref=f5e22] [cursor=pointer]:
+          - /url: /shopping_items/14/edit
+        - button "Mark as done" [ref=f5e24] [cursor=pointer]
+      - listitem [ref=f5e25]:
+        - link "Bread" [ref=f5e28] [cursor=pointer]:
+          - /url: /shopping_items/15/edit
+        - button "Mark as done" [ref=f5e30] [cursor=pointer]
+      - listitem [ref=f5e31]:
+        - link "Eggs" [ref=f5e34] [cursor=pointer]:
+          - /url: /shopping_items/16/edit
+        - button "Mark as done" [ref=f5e36] [cursor=pointer]
+    - generic [ref=f5e37]:
+      - generic [ref=f5e38]:
+        - heading "Done" [level=2] [ref=f5e39]
+        - generic [ref=f5e40]: "0"
+      - list "Completed items"
+      - paragraph [ref=f5e41]: Completed items land here.
+    - paragraph [ref=f5e42]: Click the circle to complete an item · Click a name to edit · Changes sync live across everyone

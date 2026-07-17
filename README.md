@@ -40,19 +40,46 @@ server/                    # optional broadcast WebSocket relay
 Two transports work together (`assets/js/sync.js`):
 
 1. **BroadcastChannel** — always on, no server. Instantly syncs every open
-   tab/window of the **same browser**. This makes the app "stream" out of the box.
-2. **WebSocket** — for **cross-device** sync. Set `WS_URL` at the top of
-   `assets/js/app.js` to your server, e.g. `wss://your-app.onrender.com`.
+   tab/window of the **same browser** (same origin). Great out of the box, but
+   it does **not** reach other people/devices.
+2. **WebSocket** — for **cross-device, cross-person** sync. Point the app at a
+   running relay (see below). This is the only path that lets other people see
+   the items you add.
 
-Each change is streamed as a full JSON snapshot
-`{ app, clientId, version, items }`; peers apply any snapshot newer than the
-last one they've seen (last-writer-wins). The status pill shows
-`LIVE` / `CONNECTING` / `OFFLINE` / `LOCAL SYNC`.
+> **Important:** GitHub Pages is **static-only** — it cannot run the WebSocket
+> relay. On a plain Pages deploy with no relay configured, everyone is on
+> BroadcastChannel only, so **you will not see items other people added.** To
+> sync across people you must host `server/` somewhere that supports WebSockets
+> (Render, Railway, Fly.io, a VPS…) and point the app at it.
 
-### Running the optional relay
+### How multi-person sync works
 
-GitHub Pages is static-only, so cross-device sync needs a WebSocket host.
-A minimal relay is included:
+The relay (`server/server.js`) keeps the current list **in memory** and is the
+source of truth:
+
+- When a client **connects**, the server immediately sends it the current list —
+  so a person joining sees everyone's existing items right away.
+- Each change is streamed as a full snapshot
+  `{ app, clientId, version, items, replace }`. The server **merges** items
+  per-id (newest `updatedAt` wins) and echoes the authoritative union to
+  everyone, so concurrent inserts from different people are **combined**, not
+  overwritten. `replace: true` (from **Clear**) is an authoritative wipe.
+
+The status pill shows `LIVE` / `CONNECTING` / `OFFLINE` / `LOCAL SYNC`.
+
+### Pointing the app at a relay
+
+Set `WS_URL` **once** at the top of `assets/js/app.js` to your deployed relay:
+
+```js
+var WS_URL = 'wss://your-relay.example';   // ws:// for local dev
+```
+
+That's it — every visit uses it automatically; there's nothing to declare per
+load. (Optional: append `?ws=<url>` to the page URL to override it for a single
+visit, e.g. when testing against a different relay.)
+
+### Running the relay
 
 ```bash
 cd server
@@ -60,8 +87,15 @@ npm install
 npm start          # ws://localhost:8080
 ```
 
-Then set `var WS_URL = 'ws://localhost:8080';` in `assets/js/app.js`
-(use `wss://` when deployed behind TLS).
+Then open the app pointing at it:
+
+```
+http://localhost:5199/?ws=ws://localhost:8080
+```
+
+Two different origins (e.g. `localhost` vs `127.0.0.1`) behave like two
+different devices — a handy way to test real cross-client sync locally. In
+production use `wss://` (TLS) and set it via `WS_FALLBACK` or `?ws=`.
 
 ## Deploy to GitHub Pages
 
@@ -72,6 +106,10 @@ Then set `var WS_URL = 'ws://localhost:8080';` in `assets/js/app.js`
    `https://<user>.github.io/<repo>/`.
 
 The `.nojekyll` file ensures the `assets/` folder is served verbatim.
+
+> Pages hosts only the static page. For sync between different people, also
+> deploy `server/` to a WebSocket host and load the app with
+> `?ws=wss://your-relay` (see **Realtime streaming** above).
 
 ## Local development
 

@@ -1,0 +1,25 @@
+- main [ref=f13e2]:
+  - region "Shopping list" [ref=f13e3]:
+    - generic [ref=f13e4]:
+      - generic [ref=f13e5]:
+        - heading "ShoppingList" [level=1] [ref=f13e6]
+        - generic "Realtime connection status" [ref=f13e7]: LIVE
+      - button "Clear list" [ref=f13e11] [cursor=pointer]
+    - generic [ref=f13e39]:
+      - textbox "Add an item" [ref=f13e40]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=f13e41] [cursor=pointer]: +
+    - list "Items to buy" [ref=f13e32]:
+      - listitem [ref=f13e42]:
+        - textbox "Edit item" [active] [ref=f13e56]: Bread
+        - button "Mark as done" [ref=f13e47] [cursor=pointer]
+    - generic [ref=f13e19]:
+      - generic [ref=f13e20]:
+        - heading "Done" [level=2] [ref=f13e21]
+        - generic [ref=f13e22]: "1"
+      - list "Completed items" [ref=f13e48]:
+        - listitem [ref=f13e49]:
+          - link "Milk" [ref=f13e52]:
+            - /url: /shopping_items/1/edit
+          - button "Move back to list" [ref=f13e54] [cursor=pointer]
+    - paragraph [ref=f13e24]: Click the circle to complete an item · Click a name to edit · Changes sync live across everyone

@@ -1,0 +1,50 @@
+<% content_for :title, "ShoppingList" %>
+
+<%# Subscribe to realtime Turbo Stream broadcasts (add / move / remove / edit). %>
+<%= turbo_stream_from "shopping_items" %>
+
+<main class="app">
+  <section class="card" aria-label="Shopping list">
+    <header class="card__header">
+      <div class="card__title-wrap">
+        <h1 class="card__title">
+          <%= image_tag "icon.png", class: "card__logo", alt: "" %> ShoppingList
+        </h1>
+        <span class="status" title="Realtime connection status">
+          <span class="status__dot"></span>
+          <span class="status__label">LIVE</span>
+        </span>
+      </div>
+
+      <%= button_to clear_shopping_items_path,
+            method: :delete,
+            class: "btn btn--danger btn--icon",
+            form_class: "clear-form",
+            aria: { label: "Clear list" },
+            title: "Clear list",
+            data: { turbo_confirm: "Clear the entire list (open and done)?" } do %>
+        <svg class="btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" aria-hidden="true" focusable="false"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg>
+      <% end %>
+    </header>
+
+    <%= render "shopping_items/form", item: @item %>
+
+    <section class="list-section">
+      <%= render "shopping_items/open_list", items: @open_items %>
+      <p class="empty">Nothing here yet — add your first item above.</p>
+    </section>
+
+    <section class="list-section list-section--done" data-controller="count">
+      <div class="list-section__head">
+        <h2 class="list-section__title">Done</h2>
+        <span class="list-section__count" id="done_count" data-count-target="count"><%= @done_items.size %></span>
+      </div>
+      <ul class="list list--done" id="done_items" aria-label="Completed items" data-count-target="list"><%= render partial: "shopping_items/shopping_item", collection: @done_items, as: :item %></ul>
+      <p class="empty">Completed items land here.</p>
+    </section>
+
+    <p class="hint">
+      Click the circle to complete an item · Click a name to edit · Changes sync live across everyone
+    </p>
+  </section>
+</main>

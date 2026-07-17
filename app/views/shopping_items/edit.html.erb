@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(@item, :name) do %>
+  <%= form_with model: @item, class: "item__edit-form" do |f| %>
+    <%= f.text_field :name,
+          class: "item__edit",
+          autofocus: true,
+          onfocus: "this.setSelectionRange(this.value.length, this.value.length)",
+          data: { controller: "autosubmit", action: "blur->autosubmit#submit keydown.esc->autosubmit#cancel", show_url: shopping_item_path(@item) },
+          "aria-label": "Edit item" %>
+  <% end %>
+<% end %>

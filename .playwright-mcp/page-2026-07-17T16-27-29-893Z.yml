@@ -1,0 +1,21 @@
+- main [ref=f4e2]:
+  - region "Shopping list" [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - heading "ShoppingList" [level=1] [ref=f4e6]
+        - generic "Realtime connection status" [ref=f4e7]: LOCAL SYNC
+      - button "Clear list" [ref=f4e10] [cursor=pointer]
+    - generic [ref=f4e13]:
+      - textbox "Add an item" [ref=f4e14]:
+        - /placeholder: Add an item and press Enter…
+      - button "Add item" [ref=f4e15] [cursor=pointer]: +
+    - generic [ref=f4e16]:
+      - list "Items to buy"
+      - paragraph [ref=f4e17]: Nothing here yet — add your first item above.
+    - generic [ref=f4e18]:
+      - generic [ref=f4e19]:
+        - heading "Done" [level=2] [ref=f4e20]
+        - generic [ref=f4e21]: "0"
+      - list "Completed items"
+      - paragraph [ref=f4e22]: Completed items land here.
+    - paragraph [ref=f4e23]: Click the circle or swipe an item right to complete it · Click a name to edit · Drag to reorder

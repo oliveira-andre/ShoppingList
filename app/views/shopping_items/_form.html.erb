@@ -1,0 +1,9 @@
+<%= form_with model: item, url: shopping_items_path, id: "new_item_form",
+      class: "composer", html: { autocomplete: "off" } do |f| %>
+  <%= f.text_field :name,
+        class: "composer__input",
+        placeholder: "Add an item and press Enter…",
+        autofocus: true,
+        "aria-label": "Add an item" %>
+  <button type="submit" class="composer__add" aria-label="Add item">+</button>
+<% end %>
